@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+  <body onload="init()">
+    <canvas id="myCanvas" width="1300" height="600"></canvas>
+    <script>
+        function init() {
+            var canvas = document.getElementById('myCanvas');
+            var context = canvas.getContext('2d');
+            var imageObj = new Image();
+			var imageFon = new Image();
+			imageFon.src = 'images/space-topics-image.jpg'
+            imageObj.src = 'images/set/frame_0_delay-0.03s.png';
+			
+			imageFon.onload = function() {
+				context.drawImage(imageFon, 0,0);
+			};
+			
+			var frame = 0;
+			var imageCounter = 0;
+			var y = -150;
+			var down = true;
+			
+			function animation() {
+				context.clearRect(0,0, 1200, 600);
+				imageFon.onload();
+				context.drawImage(imageObj, 20 + frame, 30 + (down==true? y : -y) );
+
+				setTimeout(animation, 35);
+				
+				if (frame == 750) {
+					frame = 0;
+				} else {
+					frame+=5;
+				}
+				
+				if (y > 150) {
+					y = -150;
+					down = !down;
+				} else {
+					y+=6;
+				}
+				
+				imageObj.src = 'images/set/frame_' + imageCounter + '_delay-0.03s.png';
+				
+				if (imageCounter == 32) {
+					imageCounter = 0;
+				} else {
+					imageCounter++;
+				}
+				
+			}
+			
+			imageObj.onload = animation();
+        }
+    </script>
+  </body>
+</html> 
