@@ -9,15 +9,15 @@
     </style>
   </head>
   <body onload="init()">
-    <canvas id="myCanvas" width="1300" height="600"></canvas>
+    <canvas id="myCanvas" width="1280" height="935"></canvas>
     <script>
         function init() {
             var canvas = document.getElementById('myCanvas');
             var context = canvas.getContext('2d');
             var imageObj = new Image();
 			var imageFon = new Image();
-			imageFon.src = 'images/space-topics-image.jpg'
-            imageObj.src = 'images/set/frame_0_delay-0.03s.png';
+			imageFon.src = 'images/rsz_pexels-photo-110854.jpg'
+            imageObj.src = 'images/clearSet/frame_0_delay-0.03s.png';
 			
 			imageFon.onload = function() {
 				context.drawImage(imageFon, 0,0);
@@ -48,7 +48,7 @@
 					y+=6;
 				}
 				
-				imageObj.src = 'images/set/frame_' + imageCounter + '_delay-0.03s.png';
+				imageObj.src = 'images/clearSet/frame_' + imageCounter + '_delay-0.03s.png';
 				
 				if (imageCounter == 32) {
 					imageCounter = 0;
